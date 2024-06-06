@@ -28,7 +28,6 @@ function commonRes(res: Response, data: unknown, options?: ResOption) {
     code: Code[type as codeType],
     data,
   }
-  logger.info(options.message)
   // 响应描述
   message && (sendRes.message = message)
   // res.set('Content-Type', 'application/json;charset=utf-8')
