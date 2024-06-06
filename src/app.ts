@@ -1,6 +1,7 @@
 import { createExpressServer } from 'routing-controllers'
 import { json, urlencoded } from 'body-parser'
 import mongoose from 'mongoose'
+import 'dotenv/config'
 
 import Routes from './routes'
 import logger from './utils/logger'
@@ -8,11 +9,9 @@ import defaultConfig from './config/default'
 import initMiddleware from './middleware'
 import dbConnect from './utils/dbConnect'
 
-const MONGODB_URI =
-  'mongodb+srv://TopMuggle:CHOUdidi423@cluster0.2qsmdbz.mongodb.net/muggleDB?retryWrites=true&w=majority&appName=Cluster0'
-
 mongoose.set('strictQuery', false)
-mongoose.connect(MONGODB_URI)
+
+mongoose.connect(process.env.MONGODB_URI ?? '')
 const app = createExpressServer({
   controllers: [],
 })

@@ -22,7 +22,6 @@ const getInfo = function () {
 const routes = (app: Express) => {
   app.get('/', async (req, res) => {
     const [e, result] = await silentHandle(getInfo)
-    console.log(e, 'eeeeeeee')
 
     e ? commonRes.error(res, null) : commonRes(res, { result })
   })
